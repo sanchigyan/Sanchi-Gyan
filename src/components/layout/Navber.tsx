@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Logo from '../../../public/logo/logo.jpeg'
+import Button from '../shared/button'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -15,7 +16,7 @@ const Navbar = () => {
     { id: 3, name: 'Pricing', href: '/subscription' },
     { id: 4, name: 'About', href: '/about' },
     { id: 5, name: 'Contact', href: '/contact' },
-    { id: 6, name: 'Careers', href: '/careers' },
+    { id: 6, name: 'Careers', href: '/careers' }
   ]
 
   // Navbar scroll effect
@@ -41,16 +42,24 @@ const Navbar = () => {
         <div className='flex justify-between h-16'>
           <div className='flex items-center'>
             <Link href='/' className='flex flex-shrink-0 items-center'>
-              <Image className='rounded-full' src={Logo} width={50} height={50} alt='Sanchi Gyan' />
+              <Image
+                className='rounded-full'
+                src={Logo}
+                width={50}
+                height={50}
+                alt='Sanchi Gyan'
+              />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center space-x-4'>
             <div className='flex space-x-4'>
-                <Link href='/register'>
-                  <button className='px-4 py-2'>Get Started</button>
-                </Link>
+              <Link href='/register'>
+                <Button variant='secondary' className='px-4 py-2 rounded-4xl'>
+                  Sign in
+                </Button>
+              </Link>
             </div>
           </div>
 
