@@ -12,7 +12,7 @@ const books = [
   { id: 2, title: "Mathematics", img: "/book2.jpeg" },
   { id: 3, title: "Social Studies", img: "/book3.jpeg" },
   { id: 4, title: "Mathematics 2", img: "/book1.jpeg" },
-  { id: 4, title: "Mathematics 2", img: "/book2.jpeg" },
+  { id: 5, title: "Mathematics 2", img: "/book2.jpeg" },
 ];
 
 export default function CardCarousel() {

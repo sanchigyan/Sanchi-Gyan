@@ -1,3 +1,4 @@
+import FeaturedInstructors from "@/components/home/FeaturedInstructors";
 import Hero from "@/components/home/hero";
 import OurServices from "@/components/home/OurServices";
 import PlatformStats from "@/components/home/PlatformStats";
@@ -13,6 +14,7 @@ export default function Home() {
         <PlatformStats/>
         <PopulerCourses/>
         <OurServices/>
+        <FeaturedInstructors/>
       </main>
     </div>
   );
