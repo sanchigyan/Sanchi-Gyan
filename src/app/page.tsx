@@ -1,3 +1,4 @@
+import FAQs from "@/components/home/FAQs";
 import FeaturedInstructors from "@/components/home/FeaturedInstructors";
 import Hero from "@/components/home/hero";
 import MoreReasonsToJoin from "@/components/home/MoreReasonsToJoin";
@@ -17,6 +18,7 @@ export default function Home() {
         <OurServices/>
         <FeaturedInstructors/>
         <MoreReasonsToJoin/>
+        <FAQs/>
       </main>
     </div>
   );
