@@ -1,4 +1,5 @@
 import Hero from "@/components/home/hero";
+import PopulerCourses from "@/components/home/populerCourses";
 import Navbar from "@/components/layout/Navber";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
       <Navbar/>
       <main>
         <Hero/>
+        <PopulerCourses/>
       </main>
     </div>
   );
