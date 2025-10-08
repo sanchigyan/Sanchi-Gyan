@@ -1,27 +1,29 @@
-import ContactNewsletter from "@/components/home/ContactNewsletter";
-import FAQs from "@/components/home/FAQs";
-import FeaturedInstructors from "@/components/home/FeaturedInstructors";
-import Hero from "@/components/home/hero";
-import MoreReasonsToJoin from "@/components/home/MoreReasonsToJoin";
-import OurServices from "@/components/home/OurServices";
-import PlatformStats from "@/components/home/PlatformStats";
-import PopulerCourses from "@/components/home/populerCourses";
-import Navbar from "@/components/layout/Navber";
+import ContactNewsletter from '@/components/home/ContactNewsletter'
+import FAQs from '@/components/home/FAQs'
+import FeaturedInstructors from '@/components/home/FeaturedInstructors'
+import Hero from '@/components/home/hero'
+import MoreReasonsToJoin from '@/components/home/MoreReasonsToJoin'
+import OurServices from '@/components/home/OurServices'
+import PlatformStats from '@/components/home/PlatformStats'
+import PopulerCourses from '@/components/home/populerCourses'
+import Footer from '@/components/layout/Footer'
+import Navbar from '@/components/layout/Navber'
 
-export default function Home() {
+export default function Home () {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <main>
-        <Hero/>
-        <PlatformStats/>
-        <PopulerCourses/>
-        <OurServices/>
-        <FeaturedInstructors/>
-        <MoreReasonsToJoin/>
-        <FAQs/>
-        <ContactNewsletter/>
+        <Hero />
+        <PlatformStats />
+        <PopulerCourses />
+        <OurServices />
+        <FeaturedInstructors />
+        <MoreReasonsToJoin />
+        <FAQs />
+        <ContactNewsletter />
       </main>
+      <Footer />
     </div>
-  );
+  )
 }
