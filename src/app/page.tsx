@@ -1,3 +1,4 @@
+import ContactNewsletter from "@/components/home/ContactNewsletter";
 import FAQs from "@/components/home/FAQs";
 import FeaturedInstructors from "@/components/home/FeaturedInstructors";
 import Hero from "@/components/home/hero";
@@ -19,6 +20,7 @@ export default function Home() {
         <FeaturedInstructors/>
         <MoreReasonsToJoin/>
         <FAQs/>
+        <ContactNewsletter/>
       </main>
     </div>
   );
