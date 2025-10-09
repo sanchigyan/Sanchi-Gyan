@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import Logo from '../../../public/logo/logo.jpeg'
+import Button from "../shared/button";
 
 export default function Footer() {
   return (
@@ -29,7 +30,7 @@ export default function Footer() {
               <Link
                 key={i}
                 href="#"
-                className="bg-gray-800 hover:bg-indigo-600 p-2 rounded-full transition-colors"
+                className="bg-gray-800 hover:bg-[var(--primary)] p-2 rounded-full transition-colors"
               >
                 <Icon className="text-white" />
               </Link>
@@ -68,9 +69,9 @@ export default function Footer() {
               placeholder="Your email"
               className="bg-gray-800 px-4 py-2 rounded-l-xl outline-none text-white"
             />
-            <button className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-xl text-white transition-all">
+            <Button variant="secondary" className="px-4 py-2 rounded-r-xl transition-all">
               Subscribe
-            </button>
+            </Button>
           </div>
         </div>
       </div>

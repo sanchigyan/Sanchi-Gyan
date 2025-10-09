@@ -22,7 +22,7 @@ const Navbar = () => {
   // Navbar scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) setScrolled(true)
+      if (window.scrollY > 100) setScrolled(true)
       else setScrolled(false)
     }
 
@@ -33,9 +33,7 @@ const Navbar = () => {
   return (
     <nav
       className={`z-50 fixed w-full transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/90 shadow-md py-2 backdrop-blur-sm'
-          : 'bg-transparent py-5'
+        scrolled ? 'shadow-md py-2 bg-black' : 'bg-transparent py-5'
       }`}
     >
       <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
@@ -54,6 +52,24 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center space-x-4'>
+            <div
+              className={`${
+                scrolled
+                  ? 'flex space-x-2'
+                  : 'hidden'
+              }`}
+            >
+              {NavLinks.map(link => (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  className='p-5 font-semibold text-gray-400 text-lg'
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+
             <div className='flex space-x-4'>
               <Link href='/register'>
                 <Button variant='secondary' className='px-4 py-2 rounded-4xl'>

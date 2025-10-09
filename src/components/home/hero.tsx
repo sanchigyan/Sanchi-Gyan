@@ -15,7 +15,7 @@ export default function Hero () {
 
   return (
     <div>
-      <section className='relative pt-10 min-h-screen overflow-hidden'>
+      <section className='relative pt-16 md:pt-10 min-h-screen overflow-hidden'>
         {/* Background elements */}
         <div className='top-0 right-0 absolute w-full h-full overflow-hidden'>
           <div className='top-0 right-0 absolute bg-[#9AD0D3] opacity-10 blur-3xl rounded-full w-[500px] h-[500px] -translate-y-1/2 translate-x-1/2 transform'></div>
@@ -23,7 +23,7 @@ export default function Hero () {
         </div>
 
         <div className='relative mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pb-20 max-w-7xl'>
-          <div>
+          <div className='p-2 md:p-0'>
             <div className='hidden md:flex justify-center items-center my-10'>
               <motion.nav
                 initial={{ opacity: 0, y: 20 }}
@@ -46,14 +46,14 @@ export default function Hero () {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="bg-[url('/banner.jpeg')] bg-cover bg-center rounded-2xl w-full h-100"
+              className="bg-[url('/banner.jpeg')] bg-cover bg-center rounded-2xl w-full h-150 md:h-100"
             >
-              <div className='mx-auto py-5 max-w-xl text-center'>
+              <div className='mx-auto py-16 md:py-5 max-w-xl text-center'>
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className='font-bold text-3xl md:text-5xl lg:text-6xl leading-tight'
+                  className='mx-auto md:mx-0 max-w-xs md:max-w-xl font-bold text-5xl lg:text-6xl leading-tight'
                 >
                   <span className='relative text-[var(--primary)]'>
                     Unlimited
@@ -78,12 +78,12 @@ export default function Hero () {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className='mt-2 text-lg md:text-2xl'
+                  className='mt-4 md:mt-2 text-xl md:text-2xl'
                 >
                   Start at Rs. 599, Cancel anytime.
                 </motion.p>
 
-                <div className='mt-2'>
+                <div className='mt-4 md:mt-2'>
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ export default function Hero () {
                     Ready to learn? Enter your email to join.
                   </motion.p>
                   <motion.form 
-                  className='mt-4'
+                  className='mt-8 md:mt-4'
                   >
                     <input 
                     placeholder='Enter your email.'

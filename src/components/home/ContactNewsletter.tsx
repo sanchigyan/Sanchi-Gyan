@@ -1,4 +1,7 @@
 "use client"
+
+import Button from "../shared/button";
+
 export default function ContactNewsletter() {
   return (
     <section className="py-20">
@@ -7,7 +10,7 @@ export default function ContactNewsletter() {
         {/* Left Content */}
         <div>
           <h2 className="mb-4 font-bold text-gray-900 dark:text-white text-4xl">
-            Stay Updated — <span className="text-indigo-600">Join Our Newsletter</span>
+            Stay Updated — <span className="text-[var(--primary)]">Join Our Newsletter</span>
           </h2>
           <p className="mb-8 text-gray-600 dark:text-gray-400">
             Get the latest updates on classes, study materials, and special offers — directly in your inbox.
@@ -17,11 +20,11 @@ export default function ContactNewsletter() {
             <input
               type="email"
               placeholder="Enter your email..."
-              className="flex-1 bg-transparent outline-none text-gray-800 dark:text-gray-200"
+              className="flex-1 bg-transparent p-2 outline-none text-gray-800 dark:text-gray-200"
             />
-            <button className="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-xl text-white transition-all">
+            <Button variant="secondary" className="px-6 py-3 rounded-xl transition-all">
               Subscribe
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -32,20 +35,20 @@ export default function ContactNewsletter() {
             <input
               type="text"
               placeholder="Your Name"
-              className="bg-gray-100 dark:bg-gray-900 px-4 py-3 border focus:border-indigo-500 border-transparent rounded-xl outline-none w-full"
+              className="bg-gray-100 dark:bg-gray-900 px-4 py-3 border focus:border-[var(--primary)] border-transparent rounded-xl outline-none w-full"
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="bg-gray-100 dark:bg-gray-900 px-4 py-3 border focus:border-indigo-500 border-transparent rounded-xl outline-none w-full"
+              className="bg-gray-100 dark:bg-gray-900 px-4 py-3 border focus:border-[var(--primary)] border-transparent rounded-xl outline-none w-full"
             />
             <textarea
               placeholder="Your Message"
-              className="bg-gray-100 dark:bg-gray-900 px-4 py-3 border focus:border-indigo-500 border-transparent rounded-xl outline-none w-full"
+              className="bg-gray-100 dark:bg-gray-900 px-4 py-3 border focus:border-[var(--primary)] border-transparent rounded-xl outline-none w-full"
             />
-            <button className="bg-indigo-600 hover:bg-indigo-700 py-3 rounded-xl w-full font-semibold text-white transition-all">
+            <Button variant="secondary" className="py-3 rounded-xl w-full font-semibold transition-all">
               Send Message
-            </button>
+            </Button>
           </form>
         </div>
       </div>

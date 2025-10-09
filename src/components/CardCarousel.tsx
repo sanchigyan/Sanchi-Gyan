@@ -17,7 +17,7 @@ const books = [
 
 export default function CardCarousel() {
   return (
-    <div className="mx-auto py-10 w-full max-w-[1200px]">
+    <div className="mx-auto px-10 md:px-0 py-10 w-full max-w-[1200px]">
       <Swiper
         modules={[Navigation]}
         navigation
