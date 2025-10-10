@@ -1,4 +1,5 @@
 'use client'
+import JobsBoard from '@/components/careers/JobsBoard'
 import LifeAtSanchiGyan from '@/components/careers/LifeAtSanchiGyan'
 import WhyJoin from '@/components/careers/WhyJoin'
 import Button from '@/components/shared/button'
@@ -71,6 +72,7 @@ export default function Careers () {
       </Hero>
       <LifeAtSanchiGyan/>
       <WhyJoin/>
+      <JobsBoard/>
     </div>
   )
 }
