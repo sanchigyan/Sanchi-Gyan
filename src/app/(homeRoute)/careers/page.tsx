@@ -1,7 +1,9 @@
 'use client'
 import JobsBoard from '@/components/careers/JobsBoard'
 import LifeAtSanchiGyan from '@/components/careers/LifeAtSanchiGyan'
+import NoFit from '@/components/careers/NoFit'
 import WhyJoin from '@/components/careers/WhyJoin'
+
 import Button from '@/components/shared/button'
 import Hero from '@/components/shared/hero'
 import { motion } from 'framer-motion'
@@ -73,6 +75,7 @@ export default function Careers () {
       <LifeAtSanchiGyan/>
       <WhyJoin/>
       <JobsBoard/>
+      <NoFit/>
     </div>
   )
 }
