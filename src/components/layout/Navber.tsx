@@ -5,10 +5,12 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Logo from '../../../public/logo/logo.jpeg'
 import Button from '../shared/button'
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
+  const pathname = usePathname()
 
   const NavLinks = [
     { id: 1, name: 'Home', href: '/' },
@@ -26,14 +28,16 @@ const Navbar = () => {
       else setScrolled(false)
     }
 
-    window.addEventListener('scroll', handleScroll)
+   if(pathname === '/') {
+     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+   }
+  }, [pathname])
 
   return (
     <nav
-      className={`z-50 fixed w-full transition-all duration-300 ${
-        scrolled ? 'shadow-md py-2 bg-black' : 'bg-transparent py-5'
+      className={`z-50 fixed w-full transition-all duration-300 bg-black ${
+        pathname === '/' ? (scrolled ? 'shadow-md py-2' : 'bg-transparent py-5'): 'bg-black py-2'
       }`}
     >
       <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
@@ -54,9 +58,7 @@ const Navbar = () => {
           <div className='hidden md:flex items-center space-x-4'>
             <div
               className={`${
-                scrolled
-                  ? 'flex space-x-2'
-                  : 'hidden'
+                pathname === '/' ? (scrolled ? 'flex space-x-2' : 'hidden') : 'flex space-x-2'
               }`}
             >
               {NavLinks.map(link => (
