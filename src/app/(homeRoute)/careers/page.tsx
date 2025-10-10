@@ -1,4 +1,5 @@
 'use client'
+import LifeAtSanchiGyan from '@/components/careers/LifeAtSanchiGyan'
 import Button from '@/components/shared/button'
 import Hero from '@/components/shared/hero'
 import { motion } from 'framer-motion'
@@ -67,6 +68,7 @@ export default function Careers () {
           </motion.div>
         </div>
       </Hero>
+      <LifeAtSanchiGyan/>
     </div>
   )
 }
