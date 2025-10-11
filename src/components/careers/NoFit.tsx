@@ -4,7 +4,7 @@ import { BiMailSend, BiRocket } from 'react-icons/bi'
 
 export default function NoFit () {
   return (
-    <div className='relative py-20'>
+    <div className='relative py-20 overflow-hidden'>
       <div className='mx-auto px-6 max-w-6xl text-center'>
         <motion.div
           initial={{ opacity: 0, y: 40 }}

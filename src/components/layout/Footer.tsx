@@ -2,25 +2,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import Logo from '../../../public/logo/logo.jpeg'
+import Logo from '../../../public/logo.png'
 import Button from "../shared/button";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 py-16 text-gray-300">
-      <div className="gap-10 grid sm:grid-cols-2 lg:grid-cols-4 mx-auto px-6 max-w-6xl">
+    <footer className="bg-gray-900 py-12 md:py-16 text-gray-300">
+      <div className="gap-10 grid sm:grid-cols-2 lg:grid-cols-4 mx-auto px-2 md:px-6 max-w-6xl">
         
         {/* Brand Info */}
         <div>
-          <div className="flex justify-around items-center">
-            <Image
-                className='rounded-full'
+          <div className='flex items-center space-x-1'>
+            <Link href='/' className='flex flex-shrink-0 items-center'>
+              <Image
                 src={Logo}
                 width={50}
                 height={50}
                 alt='Sanchi Gyan'
               />
-            <h2 className="mb-3 font-bold text-white text-2xl">Sanchi Gyan</h2>
+            </Link>
+            <h1 className='font-semibold text-xl'>Sanchi Gyan</h1>
           </div>
           <p className="text-gray-400 leading-relaxed">
             Empowering students with smart, flexible, and affordable online learning.
