@@ -4,7 +4,7 @@ import SectionTitle from '../shared/SectionTitle'
 
 export default function PopulerCourses () {
   return (
-    <div className='py-10'>
+    <div className='py-5'>
       <SectionTitle
         title='Popular Courses'
         subtitle='Discover top courses designed for high school students in Nepal to learn, grow, and succeed.'

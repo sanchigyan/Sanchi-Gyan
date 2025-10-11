@@ -37,7 +37,7 @@ const Navbar = () => {
   return (
     <nav
       className={`z-50 fixed w-full transition-all duration-300 bg-black ${
-        pathname === '/' ? (scrolled ? 'shadow-md py-2' : 'bg-transparent py-5'): 'bg-black py-2'
+        pathname === '/' ? (scrolled ? 'shadow-md py-1' : 'bg-transparent py-5'): 'bg-black py-1'
       }`}
     >
       <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>

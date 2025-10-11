@@ -37,7 +37,7 @@ export default function WhyJoin () {
   ]
 
   return (
-    <section className='py-20'>
+    <section className='py-5'>
       <div className='mx-auto px-6 max-w-6xl'>
         {/* Section title */}
         <SectionTitle

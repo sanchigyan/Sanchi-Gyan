@@ -38,10 +38,7 @@ export default function PlatformStats() {
   ];
 
   return (
-    <section className="py-10 md:py-20 overflow-hidden">
-      {/* Subtle light gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/20 via-transparent to-emerald-900/20 pointer-events-none"></div>
-
+    <section className="py-2 overflow-hidden">
       <div className="z-10 relative mx-auto px-6 lg:px-12 max-w-7xl text-center">
         {/* Section Title */}
         <SectionTitle title="Platform Statistics" subtitle="Our growing community and impact speak for themselves. Here&apos;s a quick glimpse into what we&apos;ve achieved together."/>
@@ -55,7 +52,7 @@ export default function PlatformStats() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-b from-gray-800/60 to-gray-900/40 hover:shadow-[0_0_25px_rgb(0,237,67)] backdrop-blur-lg p-8 border border-gray-700/40 rounded-2xl transition-all hover:-translate-y-2 duration-300"
+              className="bg-gradient-to-b from-gray-800/60 to-gray-900/40 backdrop-blur-lg p-8 border border-gray-700/40 rounded-2xl transition-all hover:-translate-y-2 duration-300"
             >
               <div className="flex justify-center mb-4">{stat.icon}</div>
               <h3 className="font-extrabold text-white text-4xl">

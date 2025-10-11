@@ -4,7 +4,7 @@ import Button from "../shared/button";
 
 export default function ContactNewsletter() {
   return (
-    <section className="py-10 md:py-20">
+    <section className="py-5">
       <div className="items-center gap-4 md:gap-12 grid lg:grid-cols-2 mx-auto md:px-6 max-w-4xl md:max-w-6xl">
         
         {/* Left Content */}

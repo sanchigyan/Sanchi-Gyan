@@ -12,12 +12,12 @@ export default function Careers () {
   return (
     <div>
       <Hero>
-        <div className='relative mx-auto px-4 sm:px-6 lg:px-8 py-28 max-w-7xl overflow-hidden'>
+        <div className='relative mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-7xl overflow-hidden'>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="relative flex justify-center items-center bg-[url('/CereerBanner.jpeg')] bg-cover bg-center shadow-[0_0_60px_rgba(0,0,0,0.25)] rounded-3xl w-full h-[32rem] md:h-[28rem]"
+            className="relative flex justify-center items-center bg-[url('/CereerBanner.jpeg')] bg-cover bg-center shadow-[0_0_60px_rgba(0,0,0,0.25)] rounded-3xl w-full h-[34rem]"
           >
             {/* Gradient Overlay */}
             <div className='absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-transparent rounded-3xl'></div>
@@ -29,10 +29,9 @@ export default function Careers () {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className='drop-shadow-lg font-bold text-4xl md:text-6xl leading-tight tracking-tight'
               >
-                Build Your{' '}
-                <span className='text-[var(--primary)]'>Dream Career</span>{' '}
+                Build Your Dream Career
                 <br />
-                with <span className='text-[#9AD0D3]'>Sanchi Gyan</span>
+                with Sanchi Gyan
               </motion.h1>
 
               <motion.p
@@ -72,10 +71,10 @@ export default function Careers () {
           </motion.div>
         </div>
       </Hero>
-      <LifeAtSanchiGyan/>
-      <WhyJoin/>
-      <JobsBoard/>
-      <NoFit/>
+      <LifeAtSanchiGyan />
+      <WhyJoin />
+      <JobsBoard />
+      <NoFit />
     </div>
   )
 }
