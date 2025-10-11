@@ -38,7 +38,7 @@ export default function PlatformStats() {
   ];
 
   return (
-    <section className="py-20 overflow-hidden">
+    <section className="py-10 md:py-20 overflow-hidden">
       {/* Subtle light gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/20 via-transparent to-emerald-900/20 pointer-events-none"></div>
 

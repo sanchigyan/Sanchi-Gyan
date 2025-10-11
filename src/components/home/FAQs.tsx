@@ -31,7 +31,7 @@ export default function FAQs () {
   }
 
   return (
-    <section className='py-20'>
+    <section className='py-10 md:py-20'>
       {/* Section Title */}
       <SectionTitle
         title='Frequently Asked Questions'

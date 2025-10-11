@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import Logo from '../../../public/logo/logo.jpeg'
+import Logo from '../../../public/logo.png'
 import Button from '../shared/button'
 import { usePathname } from 'next/navigation'
 
@@ -42,16 +42,16 @@ const Navbar = () => {
     >
       <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
         <div className='flex justify-between h-16'>
-          <div className='flex items-center'>
+          <div className='flex items-center space-x-1'>
             <Link href='/' className='flex flex-shrink-0 items-center'>
               <Image
-                className='rounded-full'
                 src={Logo}
-                width={50}
-                height={50}
+                width={70}
+                height={70}
                 alt='Sanchi Gyan'
               />
             </Link>
+            <h1 className='font-semibold text-2xl md:text-3xl'>Sanchi Gyan</h1>
           </div>
 
           {/* Desktop Navigation */}

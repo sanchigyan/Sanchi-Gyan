@@ -41,7 +41,7 @@ export default function OurServices() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-gray-950 via-gray-900 to-black py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-gray-950 via-gray-900 to-black py-10 md:py-20 overflow-hidden">
       {/* soft light overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/10 via-transparent to-emerald-900/10 pointer-events-none"></div>
 

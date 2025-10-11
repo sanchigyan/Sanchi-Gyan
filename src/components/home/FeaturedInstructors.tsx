@@ -41,7 +41,7 @@ export default function FeaturedInstructors() {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-10 md:py-20">
       <SectionTitle title="Featured Instructors" subtitle="Learn from the best educators with years of experience and excellence"/>
 
       <div className="gap-10 grid md:grid-cols-2 lg:grid-cols-4 mx-auto px-4 max-w-6xl">

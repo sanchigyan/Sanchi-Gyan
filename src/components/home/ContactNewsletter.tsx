@@ -4,32 +4,32 @@ import Button from "../shared/button";
 
 export default function ContactNewsletter() {
   return (
-    <section className="py-20">
-      <div className="items-center gap-12 grid lg:grid-cols-2 mx-auto px-6 max-w-6xl">
+    <section className="py-10 md:py-20">
+      <div className="items-center gap-4 md:gap-12 grid lg:grid-cols-2 mx-auto md:px-6 max-w-4xl md:max-w-6xl">
         
         {/* Left Content */}
         <div>
-          <h2 className="mb-4 font-bold text-gray-900 dark:text-white text-4xl">
+          <h2 className="mb-4 font-bold text-gray-900 dark:text-white text-3xl md:text-4xl md:text-left text-center">
             Stay Updated — <span className="text-[var(--primary)]">Join Our Newsletter</span>
           </h2>
-          <p className="mb-8 text-gray-600 dark:text-gray-400">
+          <p className="mb-8 text-gray-600 dark:text-gray-400 md:text-left text-center">
             Get the latest updates on classes, study materials, and special offers — directly in your inbox.
           </p>
 
-          <div className="flex items-center gap-3 bg-white dark:bg-gray-800 shadow-lg p-3 border border-gray-100 dark:border-gray-700 rounded-xl">
+          <div className="flex items-center gap-3 bg-white dark:bg-gray-800 shadow-lg p-2 md:p-3 border border-gray-100 dark:border-gray-700 rounded-xl">
             <input
               type="email"
               placeholder="Enter your email..."
               className="flex-1 bg-transparent p-2 outline-none text-gray-800 dark:text-gray-200"
             />
-            <Button variant="secondary" className="px-6 py-3 rounded-xl transition-all">
+            <Button variant="secondary" className="px-4 md:px-6 py-2 md:py-3 rounded-xl transition-all">
               Subscribe
             </Button>
           </div>
         </div>
 
         {/* Right Contact Form */}
-        <div className="bg-white dark:bg-gray-800 shadow-xl p-8 border border-gray-100 dark:border-gray-700 rounded-2xl">
+        <div className="bg-white dark:bg-gray-800 shadow-xl p-4 md:p-8 border border-gray-100 dark:border-gray-700 rounded-2xl">
           <h3 className="mb-4 font-semibold text-gray-900 dark:text-white text-2xl">Send Us a Message</h3>
           <form className="space-y-4">
             <input

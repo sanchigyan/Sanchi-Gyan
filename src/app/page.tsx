@@ -105,7 +105,7 @@ export default function Home () {
                       ></input>
                       <Button
                         variant='primary'
-                        className='mx-2 px-4 py-2 rounded-3xl text-gray-800 text-sm'
+                        className='mx-2 mt-5 md:mt-0 px-4 py-2 rounded-3xl text-gray-800 text-sm'
                       >
                         Get Started
                       </Button>
