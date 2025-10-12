@@ -19,7 +19,7 @@ export default function Button ({
       'bg-[var(--accent)] hover:bg-gray-50 border-2 border-[var(--secondary)] text-[var(--background)]'
   }
 
-  const baseClasses = `${variantClasses[variant]} font-bold transition-all`
+  const baseClasses = `${variantClasses[variant]} text-black font-bold transition-all`
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}

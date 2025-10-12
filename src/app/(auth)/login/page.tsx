@@ -8,25 +8,16 @@ import { HiEye, HiEyeOff } from 'react-icons/hi'
 import Image from 'next/image'
 import Button from '@/components/shared/button'
 
-export default function SignupPage() {
+export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-
-  // Simple password strength logic
-  const getPasswordStrength = () => {
-    if (password.length === 0) return ''
-    if (password.length < 6) return 'weak'
-    if (password.match(/[A-Z]/) && password.match(/[0-9]/)) return 'strong'
-    return 'medium'
-  }
-
-  const strength = getPasswordStrength()
+  const [phone, setPhone] = useState('')
 
   return (
     <div className="flex mx-auto max-w-4xl min-h-screen">
-      {/* Left Side: Signup Form */}
-      <div className="flex justify-center items-center">
+      {/* Left Side: Login Form */}
+      <div className="flex justify-center items-center w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -34,16 +25,16 @@ export default function SignupPage() {
           className="bg-white dark:bg-gray-900 shadow-xl mt-16 px-8 py-10 md:py-6 rounded-2xl w-full max-w-lg"
         >
           <h2 className="mt-4 md:mt-0 mb-6 font-bold text-gray-800 dark:text-white text-2xl text-center">
-            Start Your Learning Journey
+            Welcome Back
           </h2>
 
           {/* Social Buttons */}
-          <div className="flex sm:flex-row flex-col gap-3">
+          <div className="flex sm:flex-row flex-col gap-3 mb-3">
             <button className="flex justify-center items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 py-2 border border-gray-300 dark:border-gray-700 rounded-lg w-full text-gray-700 dark:text-gray-300">
-              <FcGoogle size={22} /> Sign up with Google
+              <FcGoogle size={22} /> Log in with Google
             </button>
             <button className="flex justify-center items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 py-2 border border-gray-300 dark:border-gray-700 rounded-lg w-full text-gray-700 dark:text-gray-300">
-              <FaFacebook size={20} className="text-blue-500" /> Sign up with Facebook
+              <FaFacebook size={20} className="text-blue-500" /> Log in with Facebook
             </button>
           </div>
 
@@ -54,21 +45,39 @@ export default function SignupPage() {
             <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
           </div>
 
-          {/* Registration Form */}
+          {/* Login with phone number */}
           <form className="space-y-4">
             <input
-              type="text"
-              placeholder="Full Name"
+              type="phone"
+              placeholder="Enter your phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
             />
-            <input
-              type="text"
-              placeholder="Mobile Number"
-              className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
-            />
+
+            {/* CTA Button */}
+            <Button
+              className="py-2 rounded-lg w-full font-semibold transition-all"
+            >
+              Send Otp
+            </Button>
+          </form>
+
+
+          {/* Divider */}
+          <div className="flex items-center gap-2 mb-3">
+            <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
+            <span className="text-gray-500 dark:text-gray-400 text-sm">or</span>
+            <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
+          </div>
+
+          {/* Login Form */}
+          <form className="space-y-4">
             <input
               type="email"
               placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
             />
 
@@ -90,84 +99,64 @@ export default function SignupPage() {
               </button>
             </div>
 
-            {/* Password Strength Meter */}
-            {password && (
-              <div className="bg-gray-200 dark:bg-gray-800 mt-1 rounded-full w-full h-1 overflow-hidden">
-                <div
-                  className={`h-1 ${
-                    strength === 'weak'
-                      ? 'bg-red-500 w-1/4'
-                      : strength === 'medium'
-                      ? 'bg-yellow-500 w-2/4'
-                      : 'bg-green-500 w-3/4'
-                  }`}
-                ></div>
-              </div>
-            )}
-
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
-            />
-
-            {/* Terms Checkbox */}
-            <label className="flex items-start gap-2 text-gray-600 dark:text-gray-300 text-sm">
-              <input type="checkbox" className="mt-1 accent-indigo-500" />
-              <span>
-                I agree to the{' '}
-                <a href="#" className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">
-                  Terms of Service
-                </a>{' '}
-                and{' '}
-                <a href="#" className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">
-                  Privacy Policy
-                </a>.
-              </span>
-            </label>
+            {/* Remember Me + Forgot Password */}
+            <div className="flex justify-between items-center text-gray-600 dark:text-gray-300 text-sm">
+              <label className="flex items-center gap-2">
+                <input type="checkbox" className="accent-indigo-500" />
+                Remember Me
+              </label>
+              <a
+                href="/forgot-password"
+                className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
+              >
+                Forgot Password?
+              </a>
+            </div>
 
             {/* CTA Button */}
             <Button
+              whileHover={{ scale: 1.05 }}
               className="py-2 rounded-lg w-full font-semibold transition-all"
             >
-              Create Account
+              Log In
             </Button>
 
-            {/* Footer Link */}
+            {/* Footer Links */}
             <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm text-center">
-              Already have an account?{' '}
-              <a href="/login" className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">
-                Log In
+              Don’t have an account?{' '}
+              <a
+                href="/signup"
+                className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
+              >
+                Sign Up
               </a>
             </p>
           </form>
         </motion.div>
       </div>
 
-      {/* Right Side: Value Proposition */}
+      {/* Right Side: Re-engagement */}
       <div className="hidden relative lg:flex justify-center items-center overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="px-8 text-center"
+          className="text-center"
         >
           <Image
             src="https://i.ibb.co/0VKSrvWt/A-relevant-uplifting-illustration-e-g-students-signup-form-Without-a-background-may-be-stable-with-d.png"
             width={400}
             height={300}
-            alt="Learning illustration"
+            alt="Login illustration"
             className="drop-shadow-lg mx-auto mb-6 w-72"
           />
           <h3 className="mb-3 font-bold text-gray-800 dark:text-white text-2xl">
-            Learn, Grow & Succeed
+            Continue Your Learning Journey
           </h3>
           <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-            <li>📘 Access to 1000+ Nepali-language courses</li>
-            <li>🎓 Track your progress and earn certificates</li>
-            <li>🌍 Join a community of 50,000+ learners</li>
+            <li>📚 Your next lesson is waiting</li>
+            <li>🎯 Pick up right where you left off</li>
+            <li>🚀 Stay consistent and achieve your goals</li>
           </ul>
         </motion.div>
       </div>
