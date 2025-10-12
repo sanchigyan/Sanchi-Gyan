@@ -34,6 +34,10 @@ const Navbar = () => {
    }
   }, [pathname])
 
+  const hiddenRoutes = ['/signup', '/signin', '/forgot-password', '/reset-password']
+
+  const shouldHide = hiddenRoutes.includes(pathname)
+
   return (
     <nav
       className={`z-50 fixed w-full transition-all duration-300 bg-black ${
@@ -72,10 +76,10 @@ const Navbar = () => {
               ))}
             </div>
 
-            <div className='flex space-x-4'>
-              <Link href='/signup'>
+            <div className={`${shouldHide ? 'hidden' : 'flex space-x-4' }`}>
+              <Link href='/login'>
                 <Button variant='secondary' className='px-4 py-2 rounded-4xl'>
-                  Sign in
+                  Log in
                 </Button>
               </Link>
             </div>
