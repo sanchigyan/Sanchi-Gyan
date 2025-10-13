@@ -1,15 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiEye, HiEyeOff, HiCheckCircle } from 'react-icons/hi'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Button from '@/components/shared/button'
 
 export default function ResetPasswordPage () {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const token = searchParams.get('token')
+//   const searchParams = useSearchParams()
+//   const token = searchParams.get('token')
 
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -40,10 +40,10 @@ export default function ResetPasswordPage () {
       return
     }
 
-    if (!token) {
-      alert('Invalid or missing reset token.')
-      return
-    }
+    // if (!token) {
+    //   alert('Invalid or missing reset token.')
+    //   return
+    // }
 
     // Simulate API call success
     setSubmitted(true)
@@ -70,75 +70,81 @@ export default function ResetPasswordPage () {
               Your new password must be different from your previous ones.
             </p>
 
-            <form onSubmit={handleSubmit} className='space-y-4 text-left'>
-              {/* New Password */}
-              <div className='relative'>
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder='New Password'
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  className='bg-transparent px-4 py-2 pr-10 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full'
-                  required
-                />
-                <button
-                  type='button'
-                  onClick={() => setShowPassword(!showPassword)}
-                  className='right-3 absolute inset-y-0 flex items-center text-gray-500 dark:text-gray-400'
-                >
-                  {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />}
-                </button>
-              </div>
-
-              {/* Password Strength Bar */}
-              {password && (
-                <div className='bg-gray-200 dark:bg-gray-800 mt-1 rounded-full w-full h-1 overflow-hidden'>
-                  <div
-                    className={`h-1 ${
-                      strength === 'weak'
-                        ? 'bg-red-500 w-1/4'
-                        : strength === 'medium'
-                        ? 'bg-yellow-500 w-2/4'
-                        : 'bg-green-500 w-3/4'
-                    }`}
-                  ></div>
+            <Suspense fallback={<div>Loading...</div>}>
+              <form onSubmit={handleSubmit} className='space-y-4 text-left'>
+                {/* New Password */}
+                <div className='relative'>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder='New Password'
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    className='bg-transparent px-4 py-2 pr-10 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full'
+                    required
+                  />
+                  <button
+                    type='button'
+                    onClick={() => setShowPassword(!showPassword)}
+                    className='right-3 absolute inset-y-0 flex items-center text-gray-500 dark:text-gray-400'
+                  >
+                    {showPassword ? (
+                      <HiEyeOff size={20} />
+                    ) : (
+                      <HiEye size={20} />
+                    )}
+                  </button>
                 </div>
-              )}
-              <p className='text-gray-500 dark:text-gray-400 text-xs'>
-                Must be at least 8 characters, include a number & a symbol.
-              </p>
 
-              {/* Confirm Password */}
-              <div className='relative'>
-                <input
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  placeholder='Confirm New Password'
-                  value={confirmPassword}
-                  onChange={e => setConfirmPassword(e.target.value)}
-                  className='bg-transparent px-4 py-2 pr-10 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full'
-                  required
-                />
-                <button
-                  type='button'
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className='right-3 absolute inset-y-0 flex items-center text-gray-500 dark:text-gray-400'
+                {/* Password Strength Bar */}
+                {password && (
+                  <div className='bg-gray-200 dark:bg-gray-800 mt-1 rounded-full w-full h-1 overflow-hidden'>
+                    <div
+                      className={`h-1 ${
+                        strength === 'weak'
+                          ? 'bg-red-500 w-1/4'
+                          : strength === 'medium'
+                          ? 'bg-yellow-500 w-2/4'
+                          : 'bg-green-500 w-3/4'
+                      }`}
+                    ></div>
+                  </div>
+                )}
+                <p className='text-gray-500 dark:text-gray-400 text-xs'>
+                  Must be at least 8 characters, include a number & a symbol.
+                </p>
+
+                {/* Confirm Password */}
+                <div className='relative'>
+                  <input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    placeholder='Confirm New Password'
+                    value={confirmPassword}
+                    onChange={e => setConfirmPassword(e.target.value)}
+                    className='bg-transparent px-4 py-2 pr-10 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full'
+                    required
+                  />
+                  <button
+                    type='button'
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className='right-3 absolute inset-y-0 flex items-center text-gray-500 dark:text-gray-400'
+                  >
+                    {showConfirmPassword ? (
+                      <HiEyeOff size={20} />
+                    ) : (
+                      <HiEye size={20} />
+                    )}
+                  </button>
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  whileHover={{ scale: 1.05 }}
+                  className='py-2 rounded-lg w-full font-semibold transition-all'
                 >
-                  {showConfirmPassword ? (
-                    <HiEyeOff size={20} />
-                  ) : (
-                    <HiEye size={20} />
-                  )}
-                </button>
-              </div>
-
-              {/* Submit Button */}
-              <Button
-                whileHover={{ scale: 1.05 }}
-                className='py-2 rounded-lg w-full font-semibold transition-all'
-              >
-                Save New Password
-              </Button>
-            </form>
+                  Save New Password
+                </Button>
+              </form>
+            </Suspense>
           </>
         ) : (
           <motion.div
