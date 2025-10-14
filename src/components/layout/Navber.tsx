@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
   const NavLinks = [
@@ -28,32 +28,36 @@ const Navbar = () => {
       else setScrolled(false)
     }
 
-   if(pathname === '/') {
-     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-   }
+    if (pathname === '/') {
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
+    }
   }, [pathname])
 
-  const hiddenRoutes = ['/signup', '/signin', '/forgot-password', '/reset-password']
+  const hiddenRoutes = [
+    '/signup',
+    '/login',
+    '/forgot-password',
+    '/reset-password'
+  ]
 
   const shouldHide = hiddenRoutes.includes(pathname)
 
   return (
     <nav
       className={`z-50 fixed w-full transition-all duration-300 bg-black ${
-        pathname === '/' ? (scrolled ? 'shadow-md py-1' : 'bg-transparent py-5'): 'bg-black py-1'
+        pathname === '/'
+          ? scrolled
+            ? 'shadow-md py-1'
+            : 'bg-transparent py-5'
+          : 'bg-black py-1'
       }`}
     >
       <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
         <div className='flex justify-between h-16'>
           <div className='flex items-center space-x-1'>
             <Link href='/' className='flex flex-shrink-0 items-center'>
-              <Image
-                src={Logo}
-                width={70}
-                height={70}
-                alt='Sanchi Gyan'
-              />
+              <Image src={Logo} width={70} height={70} alt='Sanchi Gyan' />
             </Link>
             <h1 className='font-semibold text-2xl md:text-3xl'>Sanchi Gyan</h1>
           </div>
@@ -62,7 +66,11 @@ const Navbar = () => {
           <div className='hidden md:flex items-center space-x-4'>
             <div
               className={`${
-                pathname === '/' ? (scrolled ? 'flex space-x-2' : 'hidden') : 'flex space-x-2'
+                pathname === '/'
+                  ? scrolled
+                    ? 'flex space-x-2'
+                    : 'hidden'
+                  : 'flex space-x-2'
               }`}
             >
               {NavLinks.map(link => (
@@ -76,7 +84,7 @@ const Navbar = () => {
               ))}
             </div>
 
-            <div className={`${shouldHide ? 'hidden' : 'flex space-x-4' }`}>
+            <div className={`${shouldHide ? 'hidden' : 'flex space-x-4'}`}>
               <Link href='/login'>
                 <Button variant='secondary' className='px-4 py-2 rounded-4xl'>
                   Log in
@@ -122,23 +130,25 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className='md:hidden'>
-          <div className='space-y-1 bg-white shadow-lg px-2 sm:px-3 pt-2 pb-3'>
+        <div className='md:hidden bg-black'>
+          <div className='space-y-1 shadow-lg px-2 sm:px-3 pt-2 pb-3'>
             {NavLinks.map(link => {
               return (
                 <Link
                   key={link.id}
                   href={link.href}
-                  className='block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-indigo-600 text-base'
+                  className='block px-3 py-2 rounded-md font-medium text-base'
                 >
                   {link.name}
                 </Link>
               )
             })}
             <div className='pt-4 pb-3 border-gray-200 border-t'>
-              <button className='bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md w-full font-medium text-white text-sm'>
-                Login
-              </button>
+              <Link href='login'>
+                <Button className='bg-[var(--primary)] px-4 py-2 rounded-md w-full font-semibold text-sm'>
+                  Log in
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

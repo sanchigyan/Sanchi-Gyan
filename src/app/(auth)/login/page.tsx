@@ -13,127 +13,164 @@ export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [phone, setPhone] = useState('')
+  const [activeTab, setActiveTab] = useState<'email' | 'phone'>('email')
+  const [pin, setPin] = useState('')
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    // handle login logic here
+  }
 
   return (
-    <div className="flex mx-auto max-w-4xl min-h-screen">
+    <div className="flex bg-gray-900 md:bg-black mx-auto max-w-4xl min-h-screen">
       {/* Left Side: Login Form */}
       <div className="flex justify-center items-center w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="bg-white dark:bg-gray-900 shadow-xl mt-16 px-8 py-10 md:py-8 rounded-2xl w-full max-w-lg"
+      >
+        <h2 className="mb-8 font-bold text-gray-800 dark:text-white text-2xl text-center">
+          Welcome Back
+        </h2>
+
+        {/* Tabs */}
+        <div className="flex mb-6 border-gray-300 dark:border-gray-700 border-b">
+          <button
+            onClick={() => setActiveTab('email')}
+            className={`w-1/2 py-2 text-center font-medium transition-all ${
+              activeTab === 'email'
+                ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-500'
+                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+            }`}
+          >
+            Email / Google
+          </button>
+          <button
+            onClick={() => setActiveTab('phone')}
+            className={`w-1/2 py-2 text-center font-medium transition-all ${
+              activeTab === 'phone'
+                ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-500'
+                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+            }`}
+          >
+            Phone Login
+          </button>
+        </div>
+
+        {/* Tab Content */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          key={activeTab}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="bg-white dark:bg-gray-900 shadow-xl mt-16 px-8 py-10 md:py-6 rounded-2xl w-full max-w-lg"
+          transition={{ duration: 0.4 }}
         >
-          <h2 className="mt-4 md:mt-0 mb-6 font-bold text-gray-800 dark:text-white text-2xl text-center">
-            Welcome Back
-          </h2>
+          {activeTab === 'email' ? (
+            <>
+              {/* Social Login */}
+              <div className="flex sm:flex-row flex-col gap-3 mb-4">
+                <button className="flex justify-center items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 py-2 border border-gray-300 dark:border-gray-700 rounded-lg w-full text-gray-700 dark:text-gray-300">
+                  <FcGoogle size={22} /> Log in with Google
+                </button>
+                <button className="flex justify-center items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 py-2 border border-gray-300 dark:border-gray-700 rounded-lg w-full text-gray-700 dark:text-gray-300">
+                  <FaFacebook size={20} className="text-blue-500" /> Log in with Facebook
+                </button>
+              </div>
 
-          {/* Social Buttons */}
-          <div className="flex sm:flex-row flex-col gap-3 mb-3">
-            <button className="flex justify-center items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 py-2 border border-gray-300 dark:border-gray-700 rounded-lg w-full text-gray-700 dark:text-gray-300">
-              <FcGoogle size={22} /> Log in with Google
-            </button>
-            <button className="flex justify-center items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 py-2 border border-gray-300 dark:border-gray-700 rounded-lg w-full text-gray-700 dark:text-gray-300">
-              <FaFacebook size={20} className="text-blue-500" /> Log in with Facebook
-            </button>
-          </div>
+              {/* Divider */}
+              <div className="flex items-center gap-2 mb-3">
+                <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
+                <span className="text-gray-500 dark:text-gray-400 text-sm">or</span>
+                <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
+              </div>
 
-          {/* Divider */}
-          <div className="flex items-center gap-2 mb-3">
-            <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
-            <span className="text-gray-500 dark:text-gray-400 text-sm">or</span>
-            <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
-          </div>
+              {/* Email/Password Form */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+                  required
+                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="bg-transparent px-4 py-2 pr-10 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="right-3 absolute inset-y-0 flex items-center text-gray-500 dark:text-gray-400"
+                  >
+                    {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />}
+                  </button>
+                </div>
 
-          {/* Login with phone number */}
-          <form className="space-y-4">
-            <input
-              type="phone"
-              placeholder="Enter your phone number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
-            />
+                <div className="flex justify-between items-center text-gray-600 dark:text-gray-300 text-sm">
+                  <label className="flex items-center gap-2">
+                    <input type="checkbox" className="accent-indigo-500" />
+                    Remember Me
+                  </label>
+                  <a
+                    href="/forgot-password"
+                    className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >
+                    Forgot Password?
+                  </a>
+                </div>
 
-            {/* CTA Button */}
-            <Button
-              className="py-2 rounded-lg w-full font-semibold transition-all"
-            >
-              Send Otp
-            </Button>
-          </form>
+                <Button type="submit" className="py-2 rounded-lg w-full font-semibold transition-all">
+                  Log In
+                </Button>
 
+                <p className="text-gray-600 dark:text-gray-400 text-sm text-center">
+                  Don’t have an account?{' '}
+                  <a
+                    href="/signup"
+                    className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >
+                    Sign Up
+                  </a>
+                </p>
+              </form>
+            </>
+          ) : (
+            <>
+              {/* Phone Login Form */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input
+                  type="tel"
+                  placeholder="Enter your phone number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder="Enter PIN"
+                  value={pin}
+                  onChange={(e) => setPin(e.target.value)}
+                  className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+                  required
+                />
 
-          {/* Divider */}
-          <div className="flex items-center gap-2 mb-3">
-            <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
-            <span className="text-gray-500 dark:text-gray-400 text-sm">or</span>
-            <div className="flex-grow bg-gray-300 dark:bg-gray-700 h-px" />
-          </div>
-
-          {/* Login Form */}
-          <form className="space-y-4">
-            <input
-              type="email"
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
-            />
-
-            {/* Password Field */}
-            <div className="relative">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="bg-transparent px-4 py-2 pr-10 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="right-3 absolute inset-y-0 flex items-center text-gray-500 dark:text-gray-400"
-              >
-                {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />}
-              </button>
-            </div>
-
-            {/* Remember Me + Forgot Password */}
-            <div className="flex justify-between items-center text-gray-600 dark:text-gray-300 text-sm">
-              <label className="flex items-center gap-2">
-                <input type="checkbox" className="accent-indigo-500" />
-                Remember Me
-              </label>
-              <a
-                href="/forgot-password"
-                className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
-              >
-                Forgot Password?
-              </a>
-            </div>
-
-            {/* CTA Button */}
-            <Button
-              whileHover={{ scale: 1.05 }}
-              className="py-2 rounded-lg w-full font-semibold transition-all"
-            >
-              Log In
-            </Button>
-
-            {/* Footer Links */}
-            <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm text-center">
-              Don’t have an account?{' '}
-              <a
-                href="/signup"
-                className="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
-              >
-                Sign Up
-              </a>
-            </p>
-          </form>
+                <Button type="submit" className="py-2 rounded-lg w-full font-semibold transition-all">
+                  Login with Phone
+                </Button>
+              </form>
+            </>
+          )}
         </motion.div>
-      </div>
+      </motion.div>
+    </div>
 
       {/* Right Side: Re-engagement */}
       <div className="hidden relative lg:flex justify-center items-center overflow-hidden">

@@ -29,7 +29,7 @@ export default function Home () {
         <Hero>
           <div className='relative mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12 max-w-7xl'>
             <div className='p-2 md:p-0'>
-              <div className='hidden md:flex justify-center items-center my-5'>
+              <div className='hidden md:flex justify-center items-center m-5'>
                 <motion.nav
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -51,14 +51,14 @@ export default function Home () {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
-                className="bg-[url('/banner.jpeg')] bg-cover bg-center rounded-2xl w-full h-150"
+                className="bg-[url('/banner.jpeg')] bg-cover bg-center rounded-2xl w-full h-130 sm:h-140"
               >
                 <div className='mx-auto py-16 md:py-24 max-w-2xl text-center'>
                   <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className='mx-auto md:mx-0 max-w-xs md:max-w-2xl font-bold text-5xl lg:text-6xl leading-tight'
+                    className='mx-auto md:mx-0 max-w-xs md:max-w-2xl font-bold text-4xl lg:text-6xl leading-tight'
                   >
                     Unlimited notes, Live Classes, and more.
                   </motion.h1>
@@ -84,11 +84,11 @@ export default function Home () {
                     <motion.form className='mt-8 md:mt-4'>
                       <input
                         placeholder='Enter your email.'
-                        className='mx-2 px-4 py-2 border rounded-4xl w-80 text-lg'
+                        className='mx-2 px-4 py-2 border rounded-4xl w-64 md:w-80 text-lg'
                       ></input>
                       <Button
                         variant='primary'
-                        className='mx-2 mt-5 md:mt-0 px-5 py-2 rounded-3xl text-gray-800 text-xl'
+                        className='mx-2 mt-5 md:mt-0 px-5 py-2 rounded-3xl text-gray-800 text-lg md:text-xl'
                       >
                         Get Started
                       </Button>

@@ -38,7 +38,7 @@ export default function PlatformStats() {
   ];
 
   return (
-    <section className="py-2 overflow-hidden">
+    <section>
       <div className="z-10 relative mx-auto px-6 lg:px-12 max-w-7xl text-center">
         {/* Section Title */}
         <SectionTitle title="Platform Statistics" subtitle="Our growing community and impact speak for themselves. Here&apos;s a quick glimpse into what we&apos;ve achieved together."/>
