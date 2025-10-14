@@ -4,6 +4,18 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FaUsers, FaHeart, FaGlobeAsia, FaRocket } from 'react-icons/fa'
 
+const Images = [
+  {id:1, url: 'https://i.ibb.co/ZRyPGyYP/Whats-App-Image-2025-10-08-at-12-24-08-PM-12.jpg'},
+  {id:2, url: 'https://i.ibb.co/whR2MT66/Whats-App-Image-2025-10-08-at-12-24-08-PM-11.jpg'},
+  {id:3, url: 'https://i.ibb.co/wrPYW3zj/Whats-App-Image-2025-10-08-at-12-24-08-PM-10.jpg'},
+  {id:4, url: 'https://i.ibb.co/xS5qvMQ7/Whats-App-Image-2025-10-08-at-12-24-08-PM-8.jpg'},
+  {id:5, url: 'https://i.ibb.co/WNnLbPrg/Whats-App-Image-2025-10-08-at-12-24-08-PM-9.jpg'},
+  {id:6, url: 'https://i.ibb.co/Lhd3yP12/Whats-App-Image-2025-10-08-at-12-24-08-PM-7.jpg'},
+  {id:7, url: 'https://i.ibb.co/zHh5PPFS/Whats-App-Image-2025-10-08-at-12-24-08-PM-6.jpg'},
+  {id:8, url: 'https://i.ibb.co/rfcHjTDh/Whats-App-Image-2025-10-08-at-12-24-08-PM-2.jpg'},
+  {id:9, url: 'https://i.ibb.co/dwP7cCX0/Whats-App-Image-2025-10-08-at-12-24-08-PM-5.jpg'}
+]
+
 export default function AboutPage() {
   return (
     <div className="pt-10 text-gray-800 dark:text-gray-100">
@@ -39,14 +51,19 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className='grid grid-cols-3 col-span-2 border-[var(--primary)] border-2 rounded-2xl overflow-hidden'
           >
-            <Image
-              src="https://i.ibb.co/KxjNchns/Our-Mission-Vision-We-believe-every-learner-deserves-the-chance-to-grow-through-accessible-high-qual.jpg"
+            
+            {Images.map((img)=>(
+              <Image
+              key={img.id}
+              src={img.url}
               alt="Our Mission"
               width={500}
               height={400}
               className="mx-auto"
             />
+            ))}
           </motion.div>
 
           <motion.div
