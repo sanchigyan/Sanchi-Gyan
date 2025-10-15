@@ -14,10 +14,10 @@ export default function SectionTitle ({ title, subtitle }: SectionTitleProps) {
       transition={{ duration: 0.6 }}
       className='py-5 text-center'
     >
-      <h2 className='font-bold text-transparent dark:text-white text-3xl md:text-4xl'>
+      <h2 className='font-bold dark:text-white text-3xl md:text-4xl'>
         {title}
       </h2>
-      <p className='mx-auto mt-4 max-w-3xl text-gray-300 text-lg'>
+      <p className='mx-auto mt-4 max-w-3xl text-gray-800 dark:text-gray-300 text-lg'>
        {subtitle}
       </p>
     </motion.div>

@@ -69,7 +69,7 @@ export default function FAQs () {
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className='px-6 pb-5 overflow-hidden text-gray-600 dark:text-gray-400 leading-relaxed'
+                  className='px-6 pb-5 overflow-hidden text-gray-800 dark:text-gray-400 leading-relaxed'
                 >
                   <p>{faq.a}</p>
                 </motion.div>

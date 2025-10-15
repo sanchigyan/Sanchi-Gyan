@@ -47,7 +47,7 @@ export default function MoreReasonsToJoin () {
         {reasons.map((item, index) => (
           <div
             key={index}
-            className='group relative bg-white dark:bg-gray-800 shadow-md p-8 border border-gray-100 dark:border-gray-700 rounded-2xl transition-all hover:-translate-y-2 duration-500'
+            className='group relative bg-white dark:bg-gray-800 shadow-md p-8 border border-gray-300 dark:border-gray-700 rounded-2xl transition-all hover:-translate-y-2 duration-500'
           >
             <div
               className={`text-4xl text-white p-4 rounded-xl mb-5 inline-flex bg-gradient-to-r ${item.color} shadow-lg transition-all duration-500 group-hover:scale-110`}
@@ -57,7 +57,7 @@ export default function MoreReasonsToJoin () {
             <h3 className='mb-2 font-semibold text-gray-900 dark:text-white text-xl'>
               {item.title}
             </h3>
-            <p className='text-gray-500 dark:text-gray-400 leading-relaxed'>
+            <p className='text-gray-800 dark:text-gray-400 leading-relaxed'>
               {item.desc}
             </p>
           </div>

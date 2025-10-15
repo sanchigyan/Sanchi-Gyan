@@ -70,7 +70,7 @@ export default function Footer() {
               placeholder="Your email"
               className="bg-gray-800 px-4 py-2 rounded-l-xl outline-none text-white"
             />
-            <Button variant="secondary" className="px-4 py-2 rounded-r-xl transition-all">
+            <Button variant="secondary" className="bg-white px-4 py-2 rounded-r-xl transition-all">
               Subscribe
             </Button>
           </div>

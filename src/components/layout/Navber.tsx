@@ -14,8 +14,8 @@ const Navbar = () => {
 
   const NavLinks = [
     { id: 1, name: 'Home', href: '/' },
-    { id: 2, name: 'Courses', href: '/courses' },
-    { id: 3, name: 'Pricing', href: '/subscription' },
+    // { id: 2, name: 'Courses', href: '/courses' },
+    // { id: 3, name: 'Pricing', href: '/subscription' },
     { id: 4, name: 'About', href: '/about' },
     { id: 5, name: 'Contact', href: '/contact' },
     { id: 6, name: 'Careers', href: '/careers' }
@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`z-50 fixed w-full transition-all duration-300 bg-black ${
+      className={`z-50 fixed w-full transition-all duration-300 bg-white dark:bg-black ${
         pathname === '/'
           ? scrolled
             ? 'shadow-md py-1'
@@ -77,7 +77,7 @@ const Navbar = () => {
                 <Link
                   key={link.id}
                   href={link.href}
-                  className='p-1 lg:p-5 font-semibold text-gray-400 text-lg'
+                  className='p-1 lg:p-5 font-semibold text-gray-00 dark:text-gray-400 text-lg'
                 >
                   {link.name}
                 </Link>
@@ -130,7 +130,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className='md:hidden bg-black'>
+        <div className='md:hidden dark:bg-black'>
           <div className='space-y-1 shadow-lg px-2 sm:px-3 pt-2 pb-3'>
             {NavLinks.map(link => {
               return (

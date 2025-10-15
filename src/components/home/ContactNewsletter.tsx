@@ -16,7 +16,7 @@ export default function ContactNewsletter() {
             Get the latest updates on classes, study materials, and special offers — directly in your inbox.
           </p>
 
-          <div className="flex items-center gap-3 bg-white dark:bg-gray-800 shadow-lg p-2 md:p-3 border border-gray-100 dark:border-gray-700 rounded-xl">
+          <div className="flex items-center gap-3 bg-white dark:bg-gray-800 shadow-lg p-2 md:p-3 border border-gray-200 dark:border-gray-700 rounded-xl">
             <input
               type="email"
               placeholder="Enter your email..."
@@ -29,7 +29,7 @@ export default function ContactNewsletter() {
         </div>
 
         {/* Right Contact Form */}
-        <div className="bg-white dark:bg-gray-800 shadow-xl p-4 md:p-8 border border-gray-100 dark:border-gray-700 rounded-2xl">
+        <div className="bg-white dark:bg-gray-800 shadow-xl p-4 md:p-8 border border-gray-200 dark:border-gray-700 rounded-2xl">
           <h3 className="mb-4 font-semibold text-gray-900 dark:text-white text-2xl">Send Us a Message</h3>
           <form className="space-y-4">
             <input

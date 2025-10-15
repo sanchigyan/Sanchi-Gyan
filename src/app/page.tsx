@@ -39,7 +39,7 @@ export default function Home () {
                     <Link
                       key={link.id}
                       href={link.href}
-                      className='p-4 font-semibold text-gray-400 text-lg'
+                      className='p-4 font-semibold text-gray-700 dark:text-gray-400 text-lg'
                     >
                       {link.name}
                     </Link>
@@ -53,7 +53,7 @@ export default function Home () {
                 transition={{ duration: 0.7, delay: 0.5 }}
                 className="bg-[url('/banner.jpeg')] bg-cover bg-center rounded-2xl w-full h-130 sm:h-140"
               >
-                <div className='mx-auto py-16 md:py-24 max-w-2xl text-center'>
+                <div className='mx-auto py-16 md:py-24 max-w-2xl text-white text-center'>
                   <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
