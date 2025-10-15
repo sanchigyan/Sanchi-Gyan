@@ -28,7 +28,7 @@ export default function AboutPage() {
           viewport={{ once: true }}
           className="mx-auto px-6 max-w-4xl"
         >
-          <h1 className="mb-4 font-bold text-5xl">
+          <h1 className="mb-4 font-bold text-3xl md:text-5xl">
             Empowering Learners, Inspiring Change
           </h1>
           <p className="mx-auto max-w-2xl text-gray-600 dark:text-gray-300 text-lg">
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <section className='py-5'>
         <div className="items-center gap-10 grid md:grid-cols-2 mx-auto px-6 max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}

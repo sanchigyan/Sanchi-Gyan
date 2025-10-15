@@ -43,10 +43,10 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 font-semibold text-white text-lg">Quick Links</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-indigo-400">Home</a></li>
-            <li><a href="#" className="hover:text-indigo-400">About Us</a></li>
-            <li><a href="#" className="hover:text-indigo-400">Courses</a></li>
-            <li><a href="#" className="hover:text-indigo-400">Contact</a></li>
+            <li><Link href="/" className="hover:text-indigo-400">Home</Link></li>
+            <li><Link href="/about" className="hover:text-indigo-400">About Us</Link></li>
+            <li><Link href="/courses" className="hover:text-indigo-400">Courses</Link></li>
+            <li><Link href="/contact" className="hover:text-indigo-400">Contact</Link></li>
           </ul>
         </div>
 
@@ -54,9 +54,9 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 font-semibold text-white text-lg">Resources</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-indigo-400">Blog</a></li>
-            <li><a href="#" className="hover:text-indigo-400">FAQs</a></li>
-            <li><a href="#" className="hover:text-indigo-400">Support</a></li>
+            <li><Link href="/blog" className="hover:text-indigo-400">Blog</Link></li>
+            <li><Link href="/FAQs" className="hover:text-indigo-400">FAQs</Link></li>
+            <li><Link href="/support" className="hover:text-indigo-400">Support</Link></li>
           </ul>
         </div>
 
@@ -78,7 +78,7 @@ export default function Footer() {
       </div>
 
       <div className="mt-10 pt-6 border-gray-800 border-t text-gray-500 text-center">
-        © {new Date().getFullYear()} Sahchi Gyan. All rights reserved.
+        © {new Date().getFullYear()} Sanchi Gyan. All rights reserved.
       </div>
     </footer>
   );

@@ -27,7 +27,7 @@ export default function Home () {
       <Navbar />
       <main>
         <Hero>
-          <div className='relative mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12 max-w-7xl'>
+          <div className='relative mx-auto px-4 sm:px-6 lg:px-8 pt-14 max-w-7xl'>
             <div className='p-2 md:p-0'>
               <div className='hidden md:flex justify-center items-center m-5'>
                 <motion.nav

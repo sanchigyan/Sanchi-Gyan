@@ -59,25 +59,25 @@ const Navbar = () => {
             <Link href='/' className='flex flex-shrink-0 items-center'>
               <Image src={Logo} width={70} height={70} alt='Sanchi Gyan' />
             </Link>
-            <h1 className='font-semibold text-2xl md:text-3xl'>Sanchi Gyan</h1>
+            <h1 className='font-semibold text-2xl xl:text-3xl'>Sanchi Gyan</h1>
           </div>
 
           {/* Desktop Navigation */}
-          <div className='hidden md:flex items-center space-x-4'>
+          <div className='hidden lg:flex items-center space-x-4'>
             <div
               className={`${
                 pathname === '/'
                   ? scrolled
-                    ? 'flex space-x-2'
+                    ? 'flex '
                     : 'hidden'
-                  : 'flex space-x-2'
+                  : 'flex '
               }`}
             >
               {NavLinks.map(link => (
                 <Link
                   key={link.id}
                   href={link.href}
-                  className='p-5 font-semibold text-gray-400 text-lg'
+                  className='p-1 lg:p-5 font-semibold text-gray-400 text-lg'
                 >
                   {link.name}
                 </Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className='md:hidden flex items-center'>
+          <div className='lg:hidden flex items-center'>
             <button
               title='Toggle Menu'
               onClick={() => setIsOpen(!isOpen)}
