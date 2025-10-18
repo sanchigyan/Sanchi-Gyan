@@ -51,7 +51,7 @@ export default function ContactPage () {
 
         {/* Soft Background Glow */}
         <div className='absolute inset-0 pointer-events-none'>
-          <div className='top-1/3 left-1/2 absolute bg-indigo-200/30 dark:bg-indigo-800/20 blur-3xl rounded-full w-[600px] h-[600px] -translate-x-1/2'></div>
+          <div className='top-1/3 left-1/2 absolute dark:bg-indigo-800/20 blur-3xl rounded-full w-[600px] h-[600px] -translate-x-1/2'></div>
         </div>
       </section>
 
@@ -123,10 +123,7 @@ export default function ContactPage () {
       </section>
 
       {/* Contact Form */}
-      <section
-        id='contact-form'
-        className='py-5'
-      >
+      <section id='contact-form' className='py-5'>
         <div className='mx-auto px-6 max-w-4xl text-center'>
           <h2 className='mb-8 font-bold text-3xl'>Send Us a Message</h2>
           {!submitted ? (
@@ -257,7 +254,7 @@ export default function ContactPage () {
       </section>
 
       {/* Social Media */}
-      <section className='py-5 text-white text-center'>
+      <section className='py-5 dark:text-white text-center'>
         <h2 className='mb-6 font-bold text-3xl'>Follow Us for Updates</h2>
         <p className='mb-6 text-lg'>
           Get learning tips, course updates, and more on our social channels.
