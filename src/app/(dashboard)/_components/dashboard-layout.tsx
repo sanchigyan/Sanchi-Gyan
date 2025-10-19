@@ -462,7 +462,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               <SidebarTrigger className="hover:bg-accent text-foreground" />
               <div>
                 <h1 className="font-bold text-2xl">
-                  {getWelcomeMessage()}, {user.fullname}!
+                  {getWelcomeMessage()}, {user.fullname?.split(' ')[0]}!
                 </h1>
                 <p className="text-muted-foreground text-sm">
                   Welcome back to your {userRole.toLowerCase()} dashboard
