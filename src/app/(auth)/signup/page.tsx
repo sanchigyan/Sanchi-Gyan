@@ -16,8 +16,7 @@ export default function SignupPage () {
 
   // Form data
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    fullname: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -55,18 +54,15 @@ export default function SignupPage () {
       return
     }
 
-    // Split full name into first and last name
-    const nameParts = formData.firstName.trim().split(' ')
-    const firstName = nameParts[0] || ''
-    const lastName = nameParts.slice(1).join(' ') || formData.lastName || 'User'
+    // // Split full name into first and last name
+    // const nameParts = formData.fullname.trim().split(' ')
 
     setLoading(true)
     try {
       await signup({
         email: formData.email,
         password: formData.password,
-        firstName: firstName,
-        lastName: lastName
+        fullname: formData.fullname,
       })
     } catch (error) {
       console.error('Signup error:', error)
@@ -113,7 +109,7 @@ export default function SignupPage () {
               type='text'
               name='firstName'
               placeholder='Full Name'
-              value={formData.firstName}
+              value={formData.fullname}
               onChange={handleChange}
               className='bg-transparent px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 w-full'
               required

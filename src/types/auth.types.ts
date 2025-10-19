@@ -1,8 +1,7 @@
 export interface User {
   id: string;
   email: string;
-  firstName: string;
-  lastName: string;
+  fullname: string;
   role: 'ADMIN' | 'TEACHER' | 'STUDENT';
   profileImageUrl?: string;
   isEmailVerified: boolean;
@@ -20,8 +19,7 @@ export interface AuthResponse {
 export interface SignupData {
   email: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  fullname: string;
 }
 
 export interface SigninData {

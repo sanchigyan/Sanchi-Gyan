@@ -1,6 +1,7 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
 
 // Create axios instance
 const api = axios.create({
@@ -12,13 +13,10 @@ const api = axios.create({
 
 // Request interceptor to add token
 api.interceptors.request.use(
-  (config) => {
-     // Only access localStorage on client-side
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('accessToken');
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
+   (config) => {
+    const token = Cookies.get('accessToken');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
@@ -29,38 +27,32 @@ api.interceptors.request.use(
 
 // Response interceptor for error handling
 api.interceptors.response.use(
-  (response) => response,
+   (response) => response,
   async (error) => {
     const originalRequest = error.config;
 
-    // If 401 and we haven't retried yet
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
-       // Only try to refresh on client-side
-        if (typeof window !== 'undefined') {
-          const refreshToken = localStorage.getItem('refreshToken');
-          
-          if (refreshToken) {
-            // Try to refresh token
-            const response = await axios.post(`${API_URL}/auth/refresh-token`, {
-              refreshToken,
-            });
+        const refreshToken = Cookies.get('refreshToken');
+        
+        if (refreshToken) {
+          const response = await axios.post(`${API_URL}/auth/refresh-token`, {
+            refreshToken,
+          });
 
-            const { accessToken } = response.data.data;
-            localStorage.setItem('accessToken', accessToken);
+          const { accessToken } = response.data.data;
+          Cookies.set('accessToken', accessToken, { expires: 1/48 });
 
-            originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-            return api(originalRequest);
-          }
+          originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+          return api(originalRequest);
         }
       } catch (refreshError) {
-        // Refresh failed, logout user (only on client-side)
+        Cookies.remove('accessToken');
+        Cookies.remove('refreshToken');
+        Cookies.remove('user');
         if (typeof window !== 'undefined') {
-          localStorage.removeItem('accessToken');
-          localStorage.removeItem('refreshToken');
-          localStorage.removeItem('user');
           window.location.href = '/login';
         }
         return Promise.reject(refreshError);

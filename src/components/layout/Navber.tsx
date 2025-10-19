@@ -6,19 +6,56 @@ import React, { useEffect, useState } from 'react'
 import Logo from '../../../public/logo.png'
 import Button from '../shared/button'
 import { usePathname } from 'next/navigation'
+import { useAuth } from '@/context/AuthContext'
+
+interface NavLink {
+  id: number
+  name: string
+  href: string
+  requiresAuth?: boolean
+  role?: string[]
+}
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const { user } = useAuth()
+  const [isMounted, setIsMounted] = useState(false)
 
-  const NavLinks = [
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  const getDashboardHref = () => {
+    if (!user?.role) return '/login' // Default fallback
+
+    switch (user.role.toLowerCase()) {
+      case 'admin':
+        return '/admin'
+      case 'student':
+        return '/student'
+      case 'teacher':
+        return '/teacher'
+      default:
+        return '/dashboard'
+    }
+  }
+
+  const getNavLinks = (): NavLink[] => [
     { id: 1, name: 'Home', href: '/' },
-    // { id: 2, name: 'Courses', href: '/courses' },
-    // { id: 3, name: 'Pricing', href: '/subscription' },
+    { id: 2, name: 'Courses', href: '/courses' },
+    { id: 3, name: 'Pricing', href: '/subscription' },
     { id: 4, name: 'About', href: '/about' },
     { id: 5, name: 'Contact', href: '/contact' },
-    { id: 6, name: 'Careers', href: '/careers' }
+    { id: 6, name: 'Careers', href: '/careers' },
+    {
+      id: 7,
+      name: 'Dashboard',
+      href: getDashboardHref(),
+      requiresAuth: true,
+      role: ['admin', 'student', 'teacher']
+    }
   ]
 
   // Navbar scroll effect
@@ -43,6 +80,21 @@ const Navbar = () => {
 
   const shouldHide = hiddenRoutes.includes(pathname)
 
+  // Filter links based on auth status and optionally roles
+  const filteredLinks = getNavLinks().filter(link => {
+    // If link doesn't require auth, show it to everyone
+    if (!link.requiresAuth) return true
+
+    // If link has specific role requirements, check them
+    if (link.role && user?.role) {
+      return link.role.includes(user.role.toLowerCase())
+    }
+
+    // If no role requirements, show to all authenticated users
+    return true
+  })
+  console.log(user?.email);
+
   return (
     <nav
       className={`z-50 fixed w-full transition-all duration-300 bg-white dark:bg-black ${
@@ -66,14 +118,10 @@ const Navbar = () => {
           <div className='hidden lg:flex items-center space-x-4'>
             <div
               className={`${
-                pathname === '/'
-                  ? scrolled
-                    ? 'flex '
-                    : 'hidden'
-                  : 'flex '
+                pathname === '/' ? (scrolled ? 'flex ' : 'hidden') : 'flex '
               }`}
             >
-              {NavLinks.map(link => (
+              {filteredLinks.map(link => (
                 <Link
                   key={link.id}
                   href={link.href}
@@ -85,11 +133,15 @@ const Navbar = () => {
             </div>
 
             <div className={`${shouldHide ? 'hidden' : 'flex space-x-4'}`}>
-              <Link href='/login'>
-                <Button variant='secondary' className='px-4 py-2 rounded-4xl'>
-                  Log in
-                </Button>
-              </Link>
+              {isMounted && user? (
+                <></>
+              ) : (
+                <Link href='/login'>
+                  <Button variant='secondary' className='px-4 py-2 rounded-4xl'>
+                    Log in
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
 
@@ -132,7 +184,7 @@ const Navbar = () => {
       {isOpen && (
         <div className='md:hidden dark:bg-black'>
           <div className='space-y-1 shadow-lg px-2 sm:px-3 pt-2 pb-3'>
-            {NavLinks.map(link => {
+            {filteredLinks.map(link => {
               return (
                 <Link
                   key={link.id}

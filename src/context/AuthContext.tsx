@@ -8,7 +8,7 @@ import React, {
   ReactNode
 } from 'react'
 import { useRouter } from 'next/navigation'
-import { authApi, setAuthData, getAuthData, isAuthenticated as checkAuth  } from '@/lib/auth'
+import { authApi, setAuthData, getAuthData } from '@/lib/auth'
 import { User, SignupData, SigninData } from '@/types/auth.types'
 import toast from 'react-hot-toast'
 
@@ -26,38 +26,51 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
-  const [isClient, setIsClient] = useState(false);
   const router = useRouter()
 
-   // Set client flag after mount
+  // Check if user is logged in on mount 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+   const initAuth = async () => {
+      // Wait for client-side hydration
+      if (typeof window === 'undefined') {
+        setLoading(false);
+        return;
+      }
 
-  // Check if user is logged in on mount (only on client)
-  useEffect(() => {
-    if (!isClient) return; // Don't run on server
-
-    const checkAuth = async () => {
       try {
-        const { accessToken, user: savedUser } = getAuthData()
+        const { accessToken, user: savedUser } = getAuthData();
+        
+        console.log('🔍 Checking auth...', { 
+          hasToken: !!accessToken, 
+          hasUser: !!savedUser 
+        });
 
         if (accessToken && savedUser) {
-          // Verify token is still valid by fetching current user
-          const response = await authApi.getCurrentUser()
-          setUser(response.data)
+          // Try to verify token with backend
+          try {
+            const response = await authApi.getCurrentUser();
+            console.log('✅ User verified:', response.data);
+            setUser(response.data);
+          } catch (error) {
+            console.log(error);
+            // Token invalid, clear data
+            // authApi.logout();
+            // setUser(null);
+          }
+        } else {
+          console.log('⚠️ No saved auth data found');
+          // setUser(null);
         }
       } catch (error) {
-        console.error('Auth check failed:', error)
-        // Token invalid, clear data
-        authApi.logout()
+        console.error('Auth check error:', error);
+        // setUser(null);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    checkAuth()
-  }, [isClient])
+    initAuth()
+  }, [])
 
   const signup = async (data: SignupData) => {
     try {
@@ -91,7 +104,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       toast.error(message)
       throw error
     }
-  }
+  };
 
   const logout = () => {
     authApi.logout()
@@ -108,7 +121,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         signin,
         signup,
         logout,
-        isAuthenticated: isClient ? checkAuth() : false,
+        isAuthenticated: !!user,
       }}
     >
       {children}
