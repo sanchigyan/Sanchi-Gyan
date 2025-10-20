@@ -13,6 +13,9 @@ import Button from '@/components/shared/button'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useAuth } from '@/context/AuthContext'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/router'
 
 interface NavLink {
   id: number
@@ -23,27 +26,35 @@ interface NavLink {
 }
 
 export default function Home () {
+  const [email, setEmail] = useState('')
+  const router = useRouter()
+
+  const handleGetStarted = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (email.trim() === '') return
+    router.push(`/signup?email=${encodeURIComponent(email)}`)
+  }
   const { user } = useAuth()
 
-    const getDashboardHref = () => {
-      if (!user?.role) return '/login' // Default fallback
-  
-      switch (user.role.toLowerCase()) {
-        case 'admin':
-          return '/admin'
-        case 'student':
-          return '/student'
-        case 'teacher':
-          return '/teacher'
-        default:
-          return '/dashboard'
-      }
+  const getDashboardHref = () => {
+    if (!user?.role) return '/login' // Default fallback
+
+    switch (user.role.toLowerCase()) {
+      case 'admin':
+        return '/admin'
+      case 'student':
+        return '/student'
+      case 'teacher':
+        return '/teacher'
+      default:
+        return '/dashboard'
     }
+  }
 
   const getNavLinks = (): NavLink[] => [
     { id: 1, name: 'Home', href: '/' },
-    { id: 2, name: 'Courses', href: '/courses', requiresAuth: true, },
-    { id: 3, name: 'Pricing', href: '/subscription', requiresAuth: true, },
+    { id: 2, name: 'Courses', href: '/courses', requiresAuth: true },
+    { id: 3, name: 'Pricing', href: '/subscription', requiresAuth: true },
     { id: 4, name: 'About', href: '/about' },
     { id: 5, name: 'Contact', href: '/contact' },
     { id: 6, name: 'Careers', href: '/careers' },
@@ -68,7 +79,6 @@ export default function Home () {
     if (link.role && user?.role) {
       return true
     }
-    
 
     // If no role requirements, show to all authenticated users
     return true
@@ -132,12 +142,19 @@ export default function Home () {
                     >
                       Ready to learn? Enter your email to join.
                     </motion.p>
-                    <motion.form className='mt-8 md:mt-4'>
+                    <motion.form
+                      onSubmit={handleGetStarted}
+                      className='mt-8 md:mt-4'
+                    >
                       <input
+                        type='email'
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
                         placeholder='Enter your email.'
                         className='mx-2 px-4 py-2 border rounded-4xl w-64 md:w-80 text-lg'
                       ></input>
                       <Button
+                        type='submit'
                         variant='primary'
                         className='mx-2 mt-5 md:mt-0 px-5 py-2 rounded-3xl text-gray-800 text-lg md:text-xl'
                       >

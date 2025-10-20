@@ -8,8 +8,11 @@ import { HiEye, HiEyeOff } from 'react-icons/hi'
 import Image from 'next/image'
 import Button from '@/components/shared/button'
 import { useAuth } from '@/context/AuthContext'
+import { useSearchParams } from 'next/navigation'
 
 export default function SignupPage () {
+  const searchParams = useSearchParams();
+  const prefilledEmail = searchParams.get('email') || ''
   const { signup } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -17,7 +20,7 @@ export default function SignupPage () {
   // Form data
   const [formData, setFormData] = useState({
     fullname: '',
-    email: '',
+    email: prefilledEmail || '',
     password: '',
     confirmPassword: ''
   })
