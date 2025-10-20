@@ -107,7 +107,7 @@ export default function SignupPage () {
           <form onSubmit={handleSubmit} className='space-y-4'>
             <input
               type='text'
-              name='firstName'
+              name='fullname'
               placeholder='Full Name'
               value={formData.fullname}
               onChange={handleChange}

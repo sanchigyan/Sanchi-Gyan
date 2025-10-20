@@ -12,16 +12,67 @@ import Navbar from '@/components/layout/Navber'
 import Button from '@/components/shared/button'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useAuth } from '@/context/AuthContext'
+
+interface NavLink {
+  id: number
+  name: string
+  href: string
+  requiresAuth?: boolean
+  role?: string[]
+}
 
 export default function Home () {
-  const NavLinks = [
+  const { user } = useAuth()
+
+    const getDashboardHref = () => {
+      if (!user?.role) return '/login' // Default fallback
+  
+      switch (user.role.toLowerCase()) {
+        case 'admin':
+          return '/admin'
+        case 'student':
+          return '/student'
+        case 'teacher':
+          return '/teacher'
+        default:
+          return '/dashboard'
+      }
+    }
+
+  const getNavLinks = (): NavLink[] => [
     { id: 1, name: 'Home', href: '/' },
-    { id: 2, name: 'Courses', href: '/courses' },
-    { id: 3, name: 'Pricing', href: '/subscription' },
+    { id: 2, name: 'Courses', href: '/courses', requiresAuth: true, },
+    { id: 3, name: 'Pricing', href: '/subscription', requiresAuth: true, },
     { id: 4, name: 'About', href: '/about' },
     { id: 5, name: 'Contact', href: '/contact' },
-    { id: 6, name: 'Careers', href: '/careers' }
+    { id: 6, name: 'Careers', href: '/careers' },
+    {
+      id: 7,
+      name: 'Dashboard',
+      href: getDashboardHref(),
+      requiresAuth: true,
+      role: ['ADMIN', 'STUDENT', 'TEACHER']
+    }
   ]
+
+  // Filter links based on auth status and optionally roles
+  const filteredLinks = getNavLinks().filter(link => {
+    // If link doesn't require auth, show it to everyone
+    if (!link.requiresAuth) return true
+
+    // If link requires auth but user is not logged in, hide it
+    if (link.requiresAuth && !user) return false
+
+    // If link has specific role requirements, check them
+    if (link.role && user?.role) {
+      return true
+    }
+    
+
+    // If no role requirements, show to all authenticated users
+    return true
+  })
   return (
     <div>
       <Navbar />
@@ -35,7 +86,7 @@ export default function Home () {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  {NavLinks.map(link => (
+                  {filteredLinks.map(link => (
                     <Link
                       key={link.id}
                       href={link.href}

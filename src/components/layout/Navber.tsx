@@ -44,8 +44,8 @@ const Navbar = () => {
 
   const getNavLinks = (): NavLink[] => [
     { id: 1, name: 'Home', href: '/' },
-    { id: 2, name: 'Courses', href: '/courses' },
-    { id: 3, name: 'Pricing', href: '/subscription' },
+    { id: 2, name: 'Courses', href: '/courses', requiresAuth: true, },
+    { id: 3, name: 'Pricing', href: '/subscription', requiresAuth: true, },
     { id: 4, name: 'About', href: '/about' },
     { id: 5, name: 'Contact', href: '/contact' },
     { id: 6, name: 'Careers', href: '/careers' },
@@ -54,7 +54,7 @@ const Navbar = () => {
       name: 'Dashboard',
       href: getDashboardHref(),
       requiresAuth: true,
-      role: ['admin', 'student', 'teacher']
+      role: ['ADMIN', 'STUDENT', 'TEACHER']
     }
   ]
 
@@ -85,15 +85,18 @@ const Navbar = () => {
     // If link doesn't require auth, show it to everyone
     if (!link.requiresAuth) return true
 
+    // If link requires auth but user is not logged in, hide it
+    if (link.requiresAuth && !user) return false
+
     // If link has specific role requirements, check them
     if (link.role && user?.role) {
-      return link.role.includes(user.role.toLowerCase())
+      return true
     }
-
+    
     // If no role requirements, show to all authenticated users
     return true
   })
-  console.log(user?.email);
+  console.log(user);
 
   return (
     <nav
