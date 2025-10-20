@@ -68,96 +68,96 @@ const ROUTE_GROUPS: RouteGroupType[] = [
       {
         href: '/admin',
         label: 'Overview',
-        icon: <Store className='size-4' />,
+        icon: <Store className='size-5' />,
         badge: 3
       },
       {
         href: '/admin/applications',
         label: 'Applications',
-        icon: <MdSettingsApplications className='size-4' />,
+        icon: <MdSettingsApplications className='size-5' />,
         badge: 12
       },
       {
         href: '/admin/analytics',
         label: 'Analytics',
-        icon: <BarChart3 className='size-4' />,
+        icon: <BarChart3 className='size-5' />,
         isNew: true
       },
       {
         href: '/admin/academic/subjects',
         label: 'Subjects',
-        icon: <BookOpen className='size-4' />
+        icon: <BookOpen className='size-5' />
       },
       {
         href: '/admin/academic/courses',
         label: 'Courses',
-        icon: <BookOpen className='size-4' />
+        icon: <BookOpen className='size-5' />
       },
       {
         href: '/admin/academic/curriculum',
         label: 'Curriculum',
-        icon: <ClipboardList className='size-4' />
+        icon: <ClipboardList className='size-5' />
       },
       {
         href: '/admin/academic/lessons',
         label: 'Lessons & Content',
-        icon: <Video className='size-4' />
+        icon: <Video className='size-5' />
       },
       {
         href: '/admin/academic/assignments',
         label: 'Assignments',
-        icon: <MdAssignment className='size-4' />,
+        icon: <MdAssignment className='size-5' />,
         badge: 5
       },
       {
         href: '/admin/academic/exams',
         label: 'Exams & Quizzes',
-        icon: <FileCheck className='size-4' />
+        icon: <FileCheck className='size-5' />
       },
       {
         href: '/admin/users/students',
         label: 'Students',
-        icon: <FaUserGraduate className='size-4' />
+        icon: <FaUserGraduate className='size-5' />
       },
       {
         href: '/admin/users/teachers',
         label: 'Teachers',
-        icon: <UserCheck className='size-4' />
+        icon: <UserCheck className='size-5' />
       },
       {
         href: '/admin/content/videos',
         label: 'Video Lectures',
-        icon: <PlayCircle className='size-4' />
+        icon: <PlayCircle className='size-5' />
       },
       {
         href: '/admin/content/notes',
         label: 'Study Materials',
-        icon: <FileText className='size-4' />
+        icon: <FileText className='size-5' />
       },
       {
         href: '/admin/content/library',
         label: 'Resource Library',
-        icon: <Library className='size-4' />
+        icon: <Library className='size-5' />
       },
       {
         href: '/admin/content/announcements',
         label: 'Announcements',
-        icon: <Megaphone className='size-4' />
+        icon: <Megaphone className='size-5' />
       },
       {
         href: '/admin/finance/subscriptions',
         label: 'Subscriptions',
-        icon: <CreditCard className='size-4' />
+        icon: <CreditCard className='size-5' />
       },
       {
         href: '/admin/finance/transactions',
         label: 'Transactions',
-        icon: <Receipt className='size-4' />
+        icon: <Receipt className='size-5' />
       },
       {
         href: '/admin/settings',
         label: 'General Settings',
-        icon: <Settings className='size-4' />
+        icon: <Settings className='size-5' />
       },
     ]
   },
