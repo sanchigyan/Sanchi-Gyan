@@ -7,11 +7,14 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
+import { onboardingApi, OnboardingData } from '@/lib/onboarding'
 
 export default function OnboardingPage () {
   const router = useRouter()
 
   const [step, setStep] = useState(1)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     purpose: '',
     userType: '',
@@ -60,12 +63,26 @@ export default function OnboardingPage () {
   }
 
   const handleFinish = async () => {
+    setLoading(true)
     try {
-      await fetch('/api/user/update', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      })
+      const dataToSend: OnboardingData = {
+        purpose: formData.purpose,
+        userType: formData.userType,
+      }
+
+      if (formData.classLevel) {
+        dataToSend.classLevel = formData.classLevel
+      }
+
+      if (formData.skill) {
+        dataToSend.skill = formData.skill
+      }
+
+      // Call API
+      const response = await onboardingApi.updateOnboarding(dataToSend)
+      
+      console.log('Onboarding completed:', response)
+      toast.success('Onboarding completed successfully!')
 
       // Redirect based on user answers
       if (formData.purpose === 'find_opportunity') {
@@ -79,8 +96,11 @@ export default function OnboardingPage () {
       }
     } catch (err) {
       console.error('Failed to update user info:', err)
+    } finally {
+      setLoading(false)
     }
   }
+  console.log(formData);
 
   return (
     <motion.div
@@ -181,8 +201,8 @@ export default function OnboardingPage () {
                 <Button variant="outline" onClick={handleBack}>
                   Back
                 </Button>
-                <Button onClick={handleFinish} disabled={!formData.userType}>
-                  Continue
+                <Button onClick={handleFinish} disabled={!formData.userType || loading}>
+                  {loading ? 'Saving...' : 'Continue'}
                 </Button>
               </div>
             </motion.div>
@@ -217,8 +237,8 @@ export default function OnboardingPage () {
                 <Button variant="outline" onClick={handleBack}>
                   Back
                 </Button>
-                <Button onClick={handleFinish} disabled={!formData.classLevel}>
-                  Continue
+                <Button onClick={handleFinish} disabled={!formData.classLevel || loading}>
+                   {loading ? 'Saving...' : 'Continue'}
                 </Button>
               </div>
             </motion.div>
@@ -252,8 +272,8 @@ export default function OnboardingPage () {
                 <Button variant="outline" onClick={handleBack}>
                   Back
                 </Button>
-                <Button onClick={handleFinish} disabled={!formData.skill}>
-                  Continue
+                <Button onClick={handleFinish} disabled={!formData.skill || loading}>
+                   {loading ? 'Saving...' : 'Continue'}
                 </Button>
               </div>
             </motion.div>
