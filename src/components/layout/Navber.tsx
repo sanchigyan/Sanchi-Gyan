@@ -92,6 +92,8 @@ const Navbar = () => {
     if (link.role && user?.role) {
       return true
     }
+
+    if (hiddenRoutes.includes(pathname)) return false
     
     // If no role requirements, show to all authenticated users
     return true

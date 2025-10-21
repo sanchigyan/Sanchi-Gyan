@@ -57,9 +57,6 @@ export default function SignupPage () {
       return
     }
 
-    // // Split full name into first and last name
-    // const nameParts = formData.fullname.trim().split(' ')
-
     setLoading(true)
     try {
       await signup({

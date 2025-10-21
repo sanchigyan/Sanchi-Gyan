@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(user)
 
       toast.success('Account created successfully!')
-      router.push('/')
+      router.push('/onboarding')
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : 'Signup failed'
       toast.error(message)
