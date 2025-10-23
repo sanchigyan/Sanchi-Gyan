@@ -89,8 +89,8 @@ const Navbar = () => {
     if (link.requiresAuth && !user) return false
 
     // If link has specific role requirements, check them
-    if (link.role && user?.role) {
-      return true
+    if (link.role && !link.role.includes(user?.role || '')) {
+      return false
     }
 
     if (hiddenRoutes.includes(pathname)) return false

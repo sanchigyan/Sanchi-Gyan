@@ -1,7 +1,7 @@
 'use client'
 
 import Button from '@/components/shared/button'
-import axios from 'axios'
+import api from '@/lib/api'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -119,15 +119,7 @@ export default function HignSchoolSubscriptionPage () {
   const handlePlanSelection = async (planId: string) => {
     if (planId === 'free') {
       try {
-        await axios.post(
-          '/api/v1/subscriptions/me/trial',
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          }
-        )
+        await api.post('/subscriptions/me/trial') // No body needed; api adds token/baseURL
         router.push('/student')
       } catch (error) {
         console.error('Trial activation failed', error)

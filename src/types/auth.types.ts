@@ -2,7 +2,7 @@ export interface User {
   id: string;
   email: string;
   fullname: string;
-  role: 'ADMIN' | 'TEACHER' | 'STUDENT';
+  role: 'ADMIN' | 'TEACHER' | 'STUDENT' | 'USER';
   profileImageUrl?: string;
   isEmailVerified: boolean;
 }
