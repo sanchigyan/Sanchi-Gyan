@@ -44,8 +44,18 @@ const Navbar = () => {
 
   const getNavLinks = (): NavLink[] => [
     { id: 1, name: 'Home', href: '/' },
-    { id: 2, name: 'Courses', href: '/courses', requiresAuth: true, },
-    { id: 3, name: 'Pricing', href: '/subscription', requiresAuth: true, },
+    { id: 2,
+      name: 'Courses',
+      href: '/courses',
+      requiresAuth: true,
+      role: ['USER']
+    },
+    { id: 3,
+      name: 'Pricing',
+      href: '/subscription',
+      requiresAuth: true, 
+      role: ['USER']
+    },
     { id: 4, name: 'About', href: '/about' },
     { id: 5, name: 'Contact', href: '/contact' },
     { id: 6, name: 'Careers', href: '/careers' },
